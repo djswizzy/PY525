@@ -22,10 +22,10 @@ for comb in combs:
             total+=-J*comb[i][j]*comb[(i+1)%len(comb)][j]+-J*comb[i][j]*comb[(i-1)%len(comb)][j]+-J*comb[i][j]*comb[i][(j+1)%len(comb)]+-J*comb[i][j]*comb[i][(j-1)%len(comb)]
             H.append(total)
 T=np.linspace(0.2,5,50)
-tot=0
-tot2=0
 top=[]
-for j in T:
+for i in T:
+    tot=0
+    tot2=0
     for j in range(len(combs)):
         tot+=np.exp(-H[j]/i)
         tot2+=np.exp(-H[j]/i)*H[j]
@@ -35,5 +35,4 @@ U=[]
 for i in range(len(Z)):
     U.append(top[i]/Z[i])
 U=[i/16 for i in U]
-print(U)
 plt.plot(T,U,'.')
