@@ -20,7 +20,7 @@ for comb in combs:
     for i in range(len(comb)):
         for j in range(len(comb)):
             total+=-J*comb[i][j]*comb[(i+1)%len(comb)][j]+-J*comb[i][j]*comb[(i-1)%len(comb)][j]+-J*comb[i][j]*comb[i][(j+1)%len(comb)]+-J*comb[i][j]*comb[i][(j-1)%len(comb)]
-            H.append(total)
+            H.append(total/2) #Remove double count
 T=np.linspace(0.2,5,50)
 top=[]
 for i in T:
