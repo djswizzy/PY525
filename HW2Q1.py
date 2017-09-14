@@ -45,5 +45,11 @@ U=[i/16 for i in U]
 C=[i/16 for i in C]
 plt.figure(1)
 plt.plot(T,U,'.')
+plt.xlabel('Temperature')
+plt.ylabel('U')
+plt.title('Internal Energy')
 plt.figure(2)
 plt.plot(T,C,'.',color='orange')
+plt.xlabel('Temperature')
+plt.ylabel('Cv')
+plt.title('Specific Heat')
