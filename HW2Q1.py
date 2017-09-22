@@ -52,26 +52,28 @@ seed=[]
 for _ in range(4):
     seed.append([1,1,1,1])
 for l in T:
-    for k in range(1000):
+    Hprime=[]
+    for k in range(5000):
         Hx=0
         Hy=0
-        for i in range(len(seed)):
-            for j in range(len(seed)):
-                Hx+=(-J*seed[i][j]*seed[(i+1)%len(seed)][j]+-J*seed[i][j]*seed[(i-1)%len(seed)][j]+-J*seed[i][j]*seed[i][(j+1)%len(seed)]+-J*seed[i][j]*seed[i][(j-1)%len(seed)])/2
         a=random.randint(0,3)
         b=random.randint(0,3)
         temp=[x for x in seed]
         temp[a][b]=-temp[a][b]
         for i in range(len(seed)):
             for j in range(len(seed)):
+                Hx+=(-J*seed[i][j]*seed[(i+1)%len(seed)][j]+-J*seed[i][j]*seed[(i-1)%len(seed)][j]+-J*seed[i][j]*seed[i][(j+1)%len(seed)]+-J*seed[i][j]*seed[i][(j-1)%len(seed)])/2
+        for i in range(len(seed)):
+            for j in range(len(seed)):
                 Hy+=(-J*temp[i][j]*temp[(i+1)%len(seed)][j]+-J*temp[i][j]*temp[(i-1)%len(seed)][j]+-J*temp[i][j]*temp[i][(j+1)%len(seed)]+-J*temp[i][j]*temp[i][(j-1)%len(seed)])/2
         r=np.exp(-(Hx-Hy)/l)
         if r >= 1:
-            Hmet.append(Hy)
-            seed=[x for x in temp]
+            Hprime.append(Hy)
+#            seed=[x for x in temp]
         elif r < 1 and r < random.random():
-            Hmet.append(Hy)
-            seed=[x for x in temp]
+            Hprime.append(Hy)
+#            seed=[x for x in temp]
+    Hmet.append(sum(Hprime)/len(Hprime))
 top2=[]
 Z2=[]
 var2=[]
