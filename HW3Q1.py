@@ -4,9 +4,9 @@ import numpy as np
 import matplotlib.animation as animation
 
 size=10
-particles=2
+particles=1
 T=1
-delta=.001
+delta=1
 time=5
 
 def InitializeParticles(number,boxsize,temperature):
@@ -76,7 +76,6 @@ def animate(i, points):
 
 solution=Evolve(delta,time,x,y,xvel,yvel,size)
 
-
 #Plotting
 
 
@@ -88,5 +87,5 @@ fig=plt.figure()
 points=plt.plot([],[],'o')
 plt.xlim(0,size)
 plt.ylim(0,size)
-a=animation.FuncAnimation(fig,animate,frames=len(xtime),fargs=(points), interval=50,blit=True)
+a=animation.FuncAnimation(fig,animate,frames=len(xtime),fargs=(points), interval=25,blit=True)
 plt.show()
